@@ -57,7 +57,26 @@ class PgConfig:
 
             if attr not in ["VERSION"]:
                 # The attrs ignored here are parsed and accessed as properties
-                setattr(self, attr, content)
+
+                if attr in [
+                    "BINDIR",
+                    "DOCDIR",
+                    "HTMLDIR",
+                    "INCLUDEDIR",
+                    "PKGINCLUDEDIR",
+                    "INCLUDEDIR-SERVER",
+                    "LIBDIR",
+                    "PKGLIBDIR",
+                    "LOCALEDIR",
+                    "MANDIR",
+                    "SHAREDIR",
+                    "SYSCONFDIR",
+                    "PGXS",
+                    "CC",
+                ]:
+                    setattr(self, attr, Path(content))
+                else:
+                    setattr(self, attr, content)
 
     @property
     def libs(self) -> List[str]:

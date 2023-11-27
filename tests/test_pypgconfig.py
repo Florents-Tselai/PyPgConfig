@@ -47,6 +47,10 @@ def test_pgconfig(mock_pg_config):
 
     assert pgconf.libs == ["pgcommon", "pgport", "lz4", "xml2", "z", "readline", "m"]
 
+    # Paths are parsed when it should
+    assert pgconf.BINDIR == Path("/Users/flo/pg_build/bin")
+    assert pgconf.CC == Path("gcc")
+
 
 def test_pythonpath(mock_pg_config):
     pgconf = PgConfig(mock_pg_config)
