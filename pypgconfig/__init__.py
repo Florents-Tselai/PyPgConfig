@@ -1,10 +1,11 @@
 from dataclasses import dataclass, field
 from typing import Tuple, Optional, Dict, List
 from pathlib import Path
+import subprocess
 
 
-def detect():
-    pass
+
+
 
 
 @dataclass
@@ -79,3 +80,14 @@ class PgConfig:
             f = f.replace("'", "")
             if f.startswith("PYTHON"):
                 return Path(f.replace("PYTHON=", ""))
+
+def which_pgconfig() -> Path:
+    output = subprocess.check_output(
+        ['which', 'pg_config'], text=True
+    ).strip()
+    return Path(str(output))
+
+def detect():
+    p = which_pgconfig()
+    pg_config_output = subprocess.check_output(p, text=True)
+    return PgConfig(pg_config_output)
