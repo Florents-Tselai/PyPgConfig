@@ -80,6 +80,7 @@ class PgConfig:
     @property
     def pythonpath_matches(self):
         import sys
+
         return self.pythonpath.resolve() == Path(sys.executable).resolve()
 
 
