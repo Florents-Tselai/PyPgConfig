@@ -33,7 +33,7 @@ class Version:
         return self.parsed_items[1]
 
     @property
-    def patch(self) -> int | None:
+    def patch(self) -> Optional[int]:
         try:
             return self.parsed_items[2]
         except IndexError:
