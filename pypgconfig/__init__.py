@@ -77,6 +77,11 @@ class PgConfig:
             if f.startswith("PYTHON"):
                 return Path(f.replace("PYTHON=", ""))
 
+    @property
+    def pythonpath_matches(self):
+        import sys
+        return self.pythonpath.resolve() == Path(sys.executable).resolve()
+
 
 def which_pgconfig() -> Path:
     output = subprocess.check_output(["which", "pg_config"], text=True).strip()
