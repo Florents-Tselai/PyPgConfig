@@ -4,10 +4,6 @@ from pathlib import Path
 import subprocess
 
 
-
-
-
-
 @dataclass
 class Flags:
     payload: str
@@ -81,11 +77,11 @@ class PgConfig:
             if f.startswith("PYTHON"):
                 return Path(f.replace("PYTHON=", ""))
 
+
 def which_pgconfig() -> Path:
-    output = subprocess.check_output(
-        ['which', 'pg_config'], text=True
-    ).strip()
+    output = subprocess.check_output(["which", "pg_config"], text=True).strip()
     return Path(str(output))
+
 
 def detect():
     p = which_pgconfig()
