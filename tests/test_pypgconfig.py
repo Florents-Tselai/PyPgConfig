@@ -53,6 +53,3 @@ def test_pythonpath(mock_pg_config):
 
     assert pgconf.with_python
     assert pgconf.pythonpath == Path("/opt/homebrew/bin/python3.11")
-
-def test_which_pgconfig():
-    assert which_pgconfig() == Path("/Users/flo/pg_build/bin/pg_config")
