@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import os
 
 PACKAGE_NAME = "PyPgConfig"
-VERSION = "0.1.0"
+VERSION = "0.1.0a1"
 SHORT_DESCRIPTION = "Access pg_config from Python"
 
 
